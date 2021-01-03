@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">GHMasta</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="username">User</string>
+    <string name="reponame">Repository</string>
+    <string name="search_title">Repo search</string>
+    <string name="search_hint">username or reponame</string>
+</resources>
