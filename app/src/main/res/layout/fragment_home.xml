@@ -1,51 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RadioGroup
-        android:id="@+id/filter"
+    <data>
+
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/results"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_bar">
+        android:layout_height="match_parent"
+        tools:context=".ui.home.HomeFragment">
 
-        <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/radio_pirates"
+        <ImageButton
+            android:id="@+id/search_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/username" />
+            android:contentDescription="@null"
+            android:onClick="@{onClickListener}"
+            android:src="@drawable/ic_baseline_search_24"
+            app:layout_constraintBottom_toTopOf="@id/filter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/search_text"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/radio_ninjas"
-            android:layout_width="wrap_content"
+
+        <RadioGroup
+            android:id="@+id/filter"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/reponame" />
-    </RadioGroup>
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/results"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_text">
 
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radio_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/username" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/search_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableEnd="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/filter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radio_repo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reponame" />
+        </RadioGroup>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/results"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filter" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/search_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/search_hint"
+            app:layout_constraintBottom_toTopOf="@id/filter"
+            app:layout_constraintEnd_toStartOf="@+id/search_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/results"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/filter" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
