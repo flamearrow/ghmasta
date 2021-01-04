@@ -1,13 +1,20 @@
 package band.mlgb.ghmasta.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import band.mlgb.ghmasta.data.model.Repository
+import band.mlgb.ghmasta.network.GithubApi
+import dagger.hilt.android.scopes.ActivityRetainedScoped
+import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
+@ActivityRetainedScoped
+class HomeViewModel @Inject constructor(private val githubApi: GithubApi) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    val userIdLD: MutableLiveData<String> = MutableLiveData()
+
+    val repos: LiveData<List<Repository>> = userIdLD.switchMap { userId ->
+        liveData {
+            emit(githubApi.fetchReposForUser(userId))
+        }
     }
-    val text: LiveData<String> = _text
+
 }

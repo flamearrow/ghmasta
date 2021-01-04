@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+
+        <variable
+            name="name"
+            type="java.lang.String" />
+
+        <variable
+            name="description"
+            type="java.lang.String" />
+
+        <variable
+            name="star_count"
+            type="java.lang.String" />
+
+        <variable
+            name="languages"
+            type="java.lang.String" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{name}"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="RepositoryName" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/description_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{description}"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name_tv"
+            tools:text="Repository description" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/star_count_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{star_count}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_tv"
+            tools:text="23" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/languages_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{languages}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/star_count_tv"
+            app:layout_constraintTop_toBottomOf="@+id/description_tv"
+            tools:text="java" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
