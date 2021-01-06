@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import band.mlgb.ghmasta.data.dao.GHMastaDB
 import band.mlgb.ghmasta.data.dao.RepositoryDao
+import band.mlgb.ghmasta.data.dao.RepositoryPageKeyDao
 import band.mlgb.ghmasta.data.dao.UserDao
 import dagger.Module
 import dagger.Provides
@@ -15,8 +16,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(ApplicationComponent::class)
 class DBModule {
-    // add shit
-
     @Provides
     @Singleton
     fun provideDB(@ApplicationContext context: Context): GHMastaDB {
@@ -33,5 +32,11 @@ class DBModule {
     @Singleton
     fun provideRepositoryDao(ghMastaDB: GHMastaDB): RepositoryDao {
         return ghMastaDB.getRepositoryDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideRepositoryPageKeyDao(ghMastaDB: GHMastaDB): RepositoryPageKeyDao {
+        return ghMastaDB.getRepositoryPageKeyDao()
     }
 }

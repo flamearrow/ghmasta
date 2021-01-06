@@ -2,7 +2,6 @@ package band.mlgb.ghmasta.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import band.mlgb.ghmasta.data.model.Repository
 import band.mlgb.ghmasta.data.model.User
 
 @Dao
@@ -10,12 +9,21 @@ interface UserDao {
     @Query("SELECT * FROM user_table")
     fun allUsers(): LiveData<List<User>>
 
-    @Query("SELECT * FROM user_table WHERE id = :id")
-    fun getUser(id: String): LiveData<User>
+    @Query("SELECT * FROM user_table WHERE user_id = :id")
+    fun getUserLiveData(id: String): LiveData<User>
+
+    @Query("SELECT * FROM user_table WHERE user_id = :id")
+    fun getUser(id: String): User
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertRepository(repo: Repository)
+    suspend fun insertUser(user: User)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertUsers(users: List<User>)
 
     @Delete
-    fun deleteRepository(repo: Repository)
+    fun deleteUser(user: User)
+
+    @Query("DELETE FROM user_table ")
+    suspend fun clearUsers()
 }

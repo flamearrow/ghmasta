@@ -1,13 +1,9 @@
 package band.mlgb.ghmasta.data.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy.REPLACE
-import androidx.room.Query
+import androidx.paging.PagingSource
+import androidx.room.*
 import band.mlgb.ghmasta.data.model.Repository
-import band.mlgb.ghmasta.data.model.User
 
 @Dao
 interface RepositoryDao {
@@ -17,9 +13,24 @@ interface RepositoryDao {
     @Query("SELECT * FROM repository_table WHERE id = :id")
     fun getRepository(id: String): LiveData<Repository>
 
-    @Insert(onConflict = REPLACE)
-    fun insertUser(user: User)
+    @Query("SELECT * FROM repository_table WHERE user_id = :ownerId")
+    fun getRepositoriesOfUser(ownerId: Int): PagingSource<Int, Repository>
+
+    @Query("SELECT * FROM repository_table WHERE login = :ownerLoginName ORDER BY repository_name ASC")
+    fun getRepositoriesOfUser(ownerLoginName: String): PagingSource<Int, Repository>
+
+    @Query("SELECT * FROM repository_table")
+    fun getRepositories(): PagingSource<Int, Repository>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertRepository(repo: Repository)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertRepositories(repos: List<Repository>)
 
     @Delete
-    fun deleteUser(user: User)
+    fun deleteRepository(repo: Repository)
+
+    @Query("DELETE FROM repository_table ")
+    suspend fun clearRepositories()
 }

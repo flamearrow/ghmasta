@@ -1,5 +1,7 @@
 package band.mlgb.ghmasta.data.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
@@ -132,7 +134,7 @@ data class Repository(
 //    @SerializedName("deployments_url")
 //    val deploymentsUrl: String,
     @SerializedName("description")
-    val description: String,
+    val description: String?,
 //    @SerializedName("disabled")
 //    val disabled: Boolean,
 //    @SerializedName("downloads_url")
@@ -187,7 +189,7 @@ data class Repository(
 //    @SerializedName("labels_url")
 //    val labelsUrl: String,
     @SerializedName("language")
-    val language: String,
+    val language: String?,
 //    @SerializedName("languages_url")
 //    val languagesUrl: String,
 //    @SerializedName("license")
@@ -199,7 +201,8 @@ data class Repository(
 //    @SerializedName("mirror_url")
 //    val mirrorUrl: String?,
     @SerializedName("name")
-    val name: String,
+    @ColumnInfo(name = "repository_name")
+    val name: String?,
 //    @SerializedName("node_id")
 //    val nodeId: String,
 //    @SerializedName("notifications_url")
@@ -209,6 +212,7 @@ data class Repository(
 //    @SerializedName("open_issues_count")
 //    val openIssuesCount: Int,
     @SerializedName("owner")
+    @Embedded
     val owner: User,
 //    @SerializedName("private")
 //    val `private`: Boolean,
