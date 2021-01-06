@@ -1,0 +1,152 @@
+2021-01-06 15:14:37.818 32141-32141/band.mlgb.ghmasta D/BGLM: Searching flamearrow, isRepo: true
+2021-01-06 15:14:38.023 32141-32141/band.mlgb.ghmasta D/BGLM: REFRESH
+2021-01-06 15:14:39.037 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 1
+2021-01-06 15:14:39.153 32141-32141/band.mlgb.ghmasta D/BGLM: PREPEND
+2021-01-06 15:14:39.153 32141-32141/band.mlgb.ghmasta D/BGLM: first item or null: Repository(description=play with IOS UI constraints in different screen configurations, id=71736912, language=Swift, name=-CalculatorUI, owner=User(avatarUrl=https://avatars1.githubusercontent.com/u/4720570?v=4, bio=null, blog=null, company=null, createdAt=null, email=null, eventsUrl=https://api.github.com/users/flamearrow/events{/privacy}, followers=0, followersUrl=https://api.github.com/users/flamearrow/followers, following=0, followingUrl=https://api.github.com/users/flamearrow/following{/other_user}, gistsUrl=https://api.github.com/users/flamearrow/gists{/gist_id}, gravatarId=, hireable=null, htmlUrl=https://github.com/flamearrow, id=4720570, location=null, login=flamearrow, name=null, nodeId=MDQ6VXNlcjQ3MjA1NzA=, organizationsUrl=https://api.github.com/users/flamearrow/orgs, publicGists=0, publicRepos=0, receivedEventsUrl=https://api.github.com/users/flamearrow/received_events, reposUrl=https://api.github.com/users/flamearrow/repos, siteAdmin=false, starredUrl=https://api.github.com/users/flamearrow/starred{/owner}{/repo}, subscriptionsUrl=https://api.github.com/users/flamearrow/subscriptions, twitterUsername=null, type=User, updatedAt=null, url=https://api.github.com/users/flamearrow), stargazersCount=0)
+2021-01-06 15:14:39.153 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 71736912 to prepend
+2021-01-06 15:14:39.173 32141-32141/band.mlgb.ghmasta D/BGLM: reaching head, don't pull more pages, currentPage: 1
+2021-01-06 15:14:39.175 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:39.176 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 35351515 to append
+2021-01-06 15:14:39.215 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 1, pulling nextPage: 2
+2021-01-06 15:14:39.707 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 2
+2021-01-06 15:14:42.571 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:42.571 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 281487558 to append
+2021-01-06 15:14:42.573 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 2, pulling nextPage: 3
+2021-01-06 15:14:44.495 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 3
+2021-01-06 15:14:49.432 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:49.432 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 251180135 to append
+2021-01-06 15:14:49.439 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 3, pulling nextPage: 4
+2021-01-06 15:14:50.886 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 4
+2021-01-06 15:14:52.622 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:52.623 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 37609793 to append
+2021-01-06 15:14:52.630 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 4, pulling nextPage: 5
+2021-01-06 15:14:53.328 32141-32141/band.mlgb.ghmasta D/BGLM: received 5 repos for page 5
+2021-01-06 15:14:53.423 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:53.423 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:53.432 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:53.855 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:53.941 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:53.941 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:53.945 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:53.997 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:54.091 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:54.092 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:54.097 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:54.151 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:54.256 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:54.257 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:54.262 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:54.313 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:54.420 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:54.420 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:54.424 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:54.478 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:54.571 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:54.571 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:54.575 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:54.634 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:54.732 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:54.732 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:54.737 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:54.789 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:54.874 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:54.874 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:54.878 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:54.928 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:55.016 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:55.017 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:55.021 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:55.069 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:55.153 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:55.153 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:55.158 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:55.213 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:55.300 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:55.301 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:55.305 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:55.351 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:55.449 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:55.449 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:55.453 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:55.501 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:55.592 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:55.592 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:55.597 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:55.646 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:55.737 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:55.737 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:55.741 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:55.783 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:55.866 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:55.866 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:55.869 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:55.920 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:56.002 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:56.002 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:56.005 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:56.053 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:56.143 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:56.144 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:56.150 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:56.195 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:56.277 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:56.277 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:56.282 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:56.333 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:56.426 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:56.426 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:56.429 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:56.472 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:56.557 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:56.557 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:56.560 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:56.608 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:56.692 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:56.692 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:56.696 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:56.742 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:56.822 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:56.822 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:56.827 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:56.874 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:56.956 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:56.956 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:56.963 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:57.012 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:57.094 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:57.094 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:57.098 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:57.143 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:57.227 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:57.228 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:57.232 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:57.287 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:57.371 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:57.371 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:57.374 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:57.425 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:57.525 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:57.526 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:57.530 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:57.574 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:57.656 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:57.656 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:57.659 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:57.709 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:57.790 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:57.791 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:57.795 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:57.842 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:57.920 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:57.921 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:57.928 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:57.971 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:58.050 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:58.050 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:58.054 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:58.105 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+2021-01-06 15:14:58.184 32141-32141/band.mlgb.ghmasta D/BGLM: APPEND
+2021-01-06 15:14:58.185 32141-32141/band.mlgb.ghmasta D/BGLM: searching for repositoryId 22405530 to append
+2021-01-06 15:14:58.189 32141-32141/band.mlgb.ghmasta D/BGLM: not reaching end, pulling more pages, currentPage: 5, pulling nextPage: 0
+2021-01-06 15:14:58.236 32141-32141/band.mlgb.ghmasta D/BGLM: received 10 repos for page 0
+
