@@ -25,6 +25,6 @@ interface GithubApi {
     ): Response<List<Repository>>
 
     companion object {
-        private const val REPOSITORIES_PER_PAGE = 10
+        private const val REPOSITORIES_PER_PAGE = 20
     }
 }
