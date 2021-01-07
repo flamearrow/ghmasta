@@ -40,6 +40,6 @@ class NetModule {
     }
 
     companion object {
-        private const val ACCESS_TOKEN = "1147bd6dcbf1eb6658ec115a0eb543d7c32e4d43"
+        private const val ACCESS_TOKEN = "blahblah"
     }
 }
