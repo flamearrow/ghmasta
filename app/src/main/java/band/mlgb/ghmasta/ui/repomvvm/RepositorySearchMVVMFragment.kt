@@ -1,4 +1,4 @@
-package band.mlgb.ghmasta.ui.home
+package band.mlgb.ghmasta.ui.repomvvm
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,18 +7,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.ExperimentalPagingApi
-import band.mlgb.ghmasta.databinding.FragmentHomeBinding
+import band.mlgb.ghmasta.databinding.FragmentRepositorySearchBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * View for Repository search MVVM
+ */
 @ExperimentalPagingApi
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
-
+class RepositorySearchMVVMFragment : Fragment() {
 
     @Inject
-    lateinit var homeViewModel: HomeViewModel
+    lateinit var repositorySearchMVVMViewModel: RepositorySearchMVVMViewModel
 
     @Inject
     lateinit var reposAdapter: SearchResultPagingAdapter
@@ -28,19 +30,19 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentHomeBinding.inflate(inflater, container, false)
+        val binding = FragmentRepositorySearchBinding.inflate(inflater, container, false)
         binding.onClickListener = View.OnClickListener {
             binding.searchText.text?.let { searchText ->
                 when (binding.radioName.isChecked) {
-                    true -> homeViewModel.userIdLD
-                    false -> homeViewModel.repositoryKeyword
+                    true -> repositorySearchMVVMViewModel.userIdLD
+                    false -> repositorySearchMVVMViewModel.repositoryKeyword
                 }.postValue(searchText.toString())
             }
         }
 
         binding.results.adapter = reposAdapter
 
-        homeViewModel.reposResultLive.observe(viewLifecycleOwner) { reposList ->
+        repositorySearchMVVMViewModel.reposResultLive.observe(viewLifecycleOwner) { reposList ->
             lifecycleScope.launch {
                 reposAdapter.submitData(reposList)
             }
@@ -48,4 +50,5 @@ class HomeFragment : Fragment() {
 
         return binding.root
     }
+
 }

@@ -1,4 +1,4 @@
-package band.mlgb.ghmasta.ui.home
+package band.mlgb.ghmasta.ui.repomvvm
 
 import androidx.lifecycle.*
 import androidx.paging.ExperimentalPagingApi
@@ -9,30 +9,26 @@ import band.mlgb.ghmasta.data.model.Repository
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import javax.inject.Inject
 
+/**
+ * [ViewModel] for Repository search MVVM
+ */
 @ActivityRetainedScoped
 @ExperimentalPagingApi
-class HomeViewModel @Inject constructor(
+class RepositorySearchMVVMViewModel @Inject constructor(
     private val repositoryRepo: RepositoryRepository,
 ) : ViewModel() {
-
     val userIdLD: MutableLiveData<String> = MutableLiveData()
 
     val repositoryKeyword: MutableLiveData<String> = MutableLiveData()
 
     private val userReposLive: LiveData<PagingData<Repository>> = userIdLD.switchMap { userIdLD ->
-        liveData {
-            emitSource(repositoryRepo.searchRepositoryWithUserId(userIdLD).cachedIn(viewModelScope))
-        }
+        repositoryRepo.searchRepositoryWithUserName(userIdLD).cachedIn(viewModelScope)
     }
 
     private val keywordSearchReposLive: LiveData<PagingData<Repository>> =
         repositoryKeyword.switchMap { repositoryKeyword ->
-            liveData {
-                emitSource(
-                    repositoryRepo.searchRepositoryWithKeyword(repositoryKeyword)
-                        .cachedIn(viewModelScope)
-                )
-            }
+            repositoryRepo.searchRepositoryWithKeyword(repositoryKeyword)
+                .cachedIn(viewModelScope)
         }
 
 

@@ -1,4 +1,4 @@
-package band.mlgb.ghmasta.ui.home
+package band.mlgb.ghmasta.ui.repomvvm
 
 import android.util.Log
 import android.view.LayoutInflater
