@@ -1,4 +1,4 @@
-package band.mlgb.ghmasta.ui.repomvi
+package band.mlgb.ghmasta.ui.reposearch.mvi
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,8 +11,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.ExperimentalPagingApi
 import band.mlgb.ghmasta.data.RepositoryState
 import band.mlgb.ghmasta.databinding.FragmentRepositorySearchBinding
-import band.mlgb.ghmasta.ui.repomvvm.SearchResultPagingAdapter
-import band.mlgb.ghmasta.ui.views.RepositorySearchView
+import band.mlgb.ghmasta.ui.reposearch.SearchResultPagingAdapter
+import band.mlgb.ghmasta.ui.reposearch.views.RepositorySearchView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject

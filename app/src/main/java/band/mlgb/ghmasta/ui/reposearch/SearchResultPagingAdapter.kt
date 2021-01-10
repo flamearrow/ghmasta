@@ -1,4 +1,4 @@
-package band.mlgb.ghmasta.ui.repomvvm
+package band.mlgb.ghmasta.ui.reposearch
 
 import android.util.Log
 import android.view.LayoutInflater

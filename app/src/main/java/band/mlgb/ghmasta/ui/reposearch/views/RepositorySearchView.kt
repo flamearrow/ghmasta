@@ -1,4 +1,4 @@
-package band.mlgb.ghmasta.ui.views
+package band.mlgb.ghmasta.ui.reposearch.views
 
 import androidx.lifecycle.LiveData
 import band.mlgb.ghmasta.data.RepositoryState

@@ -1,4 +1,4 @@
-package band.mlgb.ghmasta.ui.repomvvm
+package band.mlgb.ghmasta.ui.reposearch.mvvm
 
 import androidx.lifecycle.*
 import androidx.paging.ExperimentalPagingApi

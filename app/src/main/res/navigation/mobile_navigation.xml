@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_repo_search_mvvm"
-        android:name="band.mlgb.ghmasta.ui.repomvvm.RepositorySearchMVVMFragment"
+        android:name="band.mlgb.ghmasta.ui.reposearch.mvvm.RepositorySearchMVVMFragment"
         android:label="@string/title_repository_mvvm"
         tools:layout="@layout/fragment_repository_search" />
 
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_repo_search_mvi"
-        android:name="band.mlgb.ghmasta.ui.repomvi.RepositorySearchMVIFragment"
+        android:name="band.mlgb.ghmasta.ui.reposearch.mvi.RepositorySearchMVIFragment"
         android:label="@string/title_repository_mvi"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

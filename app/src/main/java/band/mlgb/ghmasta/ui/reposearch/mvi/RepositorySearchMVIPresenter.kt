@@ -1,10 +1,10 @@
-package band.mlgb.ghmasta.ui.repomvi
+package band.mlgb.ghmasta.ui.reposearch.mvi
 
 import androidx.lifecycle.*
 import androidx.paging.ExperimentalPagingApi
 import band.mlgb.ghmasta.data.RepositoryRepository
 import band.mlgb.ghmasta.data.RepositoryState
-import band.mlgb.ghmasta.ui.views.RepositorySearchView
+import band.mlgb.ghmasta.ui.reposearch.views.RepositorySearchView
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import javax.inject.Inject
 
