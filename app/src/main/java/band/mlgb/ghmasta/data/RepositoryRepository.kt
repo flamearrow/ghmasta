@@ -24,12 +24,30 @@ class RepositoryRepository @Inject constructor(
         return Pager(
             config = PagingConfig(pageSize = PAGE_SIZE, enablePlaceholders = false),
             remoteMediator = RepositoryMediator(
+                RepositoryMediator.SearchType.USER_NAME,
                 userLoginName,
                 githubApi,
                 ghMastaDB
             )
         ) {
             ghMastaDB.getRepositoryDao().getRepositoriesOfUser(userLoginName)
+        }.liveData
+    }
+
+    @ExperimentalPagingApi
+    fun searchRepositoryWithKeyword(keyword: String): LiveData<PagingData<Repository>> {
+        // need to create a new Pager each time because the search query is different
+        return Pager(
+            config = PagingConfig(pageSize = PAGE_SIZE, enablePlaceholders = false),
+            remoteMediator = RepositoryMediator(
+                RepositoryMediator.SearchType.REPOSITORY_KEYWORD,
+                keyword,
+                githubApi,
+                ghMastaDB
+            )
+        ) {
+            // important: when search sql with 'like', the query needs to be pre/append with % to be a wildcard matching
+            ghMastaDB.getRepositoryDao().getRepositories("%${keyword.replace(' ', '%')}%")
         }.liveData
     }
 

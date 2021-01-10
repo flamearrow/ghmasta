@@ -1,7 +1,6 @@
 package band.mlgb.ghmasta.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,29 +31,16 @@ class HomeFragment : Fragment() {
         val binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.onClickListener = View.OnClickListener {
             binding.searchText.text?.let { searchText ->
-                val isSearchingRepo = binding.radioRepo.isChecked
-                Log.d("BGLM", "Searching $searchText, isRepo: $isSearchingRepo")
-                // fire intent
-                if (isSearchingRepo) {
-                    homeViewModel.userIdLD.postValue(searchText.toString())
-//                    lifecycleScope.launch {
-//                        homeViewModel.searchResultLiveData(searchText.toString())
-//                            .observe(viewLifecycleOwner) { reposList ->
-//                                launch {
-//                                    reposAdapter.submitData(reposList)
-//                                }
-//                            }
-//                    }
-                }
+                when (binding.radioName.isChecked) {
+                    true -> homeViewModel.userIdLD
+                    false -> homeViewModel.repositoryKeyword
+                }.postValue(searchText.toString())
             }
         }
 
         binding.results.adapter = reposAdapter
 
-//        homeViewModel.repos.observe(viewLifecycleOwner) { reposList ->
-//            reposAdapter.submitList(reposList)
-//        }
-        homeViewModel.reposLive.observe(viewLifecycleOwner) { reposList ->
+        homeViewModel.reposResultLive.observe(viewLifecycleOwner) { reposList ->
             lifecycleScope.launch {
                 reposAdapter.submitData(reposList)
             }

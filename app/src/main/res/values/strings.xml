@@ -6,5 +6,6 @@
     <string name="username">User</string>
     <string name="reponame">Repository</string>
     <string name="search_title">Repo search</string>
-    <string name="search_hint">username or reponame</string>
+    <string name="search_hint">username or repository keyword</string>
+    <string name="flamearrow">flamearrow</string>
 </resources>

@@ -10,15 +10,25 @@ import androidx.room.withTransaction
 import band.mlgb.ghmasta.data.dao.GHMastaDB
 import band.mlgb.ghmasta.data.model.Repository
 import band.mlgb.ghmasta.data.model.RepositoryPageKey
+import band.mlgb.ghmasta.data.model.RepositorySearchResponse
 import band.mlgb.ghmasta.network.GithubApi
 
-
+/**
+ * The Remote mediator fires request to github api and uses the 'link' header of the response for pagination.
+ * See [RepositoryMediator.getPageInfo] for details on resolving link header.
+ */
 @ExperimentalPagingApi
 class RepositoryMediator(
-    private val userLoginName: String,
+    private val searchType: SearchType,
+    private val query: String,
     private val githubApi: GithubApi,
     private val ghMastaDB: GHMastaDB,
 ) : RemoteMediator<Int, Repository>() {
+
+    enum class SearchType {
+        USER_NAME, // "users/${query}/repos"
+        REPOSITORY_KEYWORD // "repositories?q=${query}&sort=stars"
+    }
 
     // check pageToRequest, decide if we want to fire API request
     //   if refresh, fire request regardless
@@ -47,7 +57,7 @@ class RepositoryMediator(
                             .getRepositoryPageKey(repository.id)?.currentPage
                     }
                 } ?: GITHUB_STARTING_PAGE_INDEX
-                fireRequestForPage(page, true)
+                fireRequestForPageAndUpdateDB(page, true)
             }
 
             LoadType.APPEND -> {
@@ -66,7 +76,7 @@ class RepositoryMediator(
                     } else {
                         // not reaching last, fire request for nextPage
                         mediatorLog("not reaching end, pulling more pages, currentPage: ${repositoryPageKey.currentPage}, pulling nextPage: ${repositoryPageKey.nextPage}")
-                        fireRequestForPage(repositoryPageKey.nextPage)
+                        fireRequestForPageAndUpdateDB(repositoryPageKey.nextPage)
                     }
                 } ?: run {
                     mediatorLog("Failed to resolve PagingState $state")
@@ -91,7 +101,7 @@ class RepositoryMediator(
                     } else {
                         // not reaching first, fire request for previousPage
                         mediatorLog("not reaching head, pulling more pages, currentPage: ${repositoryPageKey.currentPage}, pulling previousPage: ${repositoryPageKey.previousPage}")
-                        fireRequestForPage(repositoryPageKey.previousPage)
+                        fireRequestForPageAndUpdateDB(repositoryPageKey.previousPage)
                     }
                 } ?: run {
                     mediatorLog("Failed to resolve PagingState $state")
@@ -117,39 +127,29 @@ class RepositoryMediator(
     // fire request to pull repository of a user at current page,
     // upon response save Repository from the response and RepositoryPageKey from header
     // once we hit this, endOfPaging is not reached
-    private suspend fun fireRequestForPage(
+    private suspend fun fireRequestForPageAndUpdateDB(
         currentPage: Int,
         clearRepo: Boolean = false
     ): MediatorResult {
         try {
-            githubApi.fetchReposForUserResponse(userLoginName, currentPage).let { response ->
+            when (searchType) {
+                SearchType.USER_NAME -> githubApi.fetchReposForUserResponse(query, currentPage)
+                SearchType.REPOSITORY_KEYWORD -> githubApi.searchRepoWithKeyword(query, currentPage)
+            }.let { response ->
                 if (response.isSuccessful) {
-                    mediatorLog("received ${response.body()!!.size} repos for page $currentPage")
                     response.headers()[LINK]?.let { linkHeader ->
-                        val (nextPage, previousPage, firstPage, lastPage) = getPageInfo(linkHeader)
-                        response.body()?.let { repositories ->
-                            val users = repositories.map { it.owner }
-                            val repositoryPageKeys = repositories.map {
-                                RepositoryPageKey(
-                                    it.id,
-                                    currentPage,
-                                    nextPage,
-                                    previousPage,
-                                    firstPage,
-                                    lastPage
-                                )
-                            }
-                            ghMastaDB.withTransaction {
-                                if (clearRepo) {
-                                    ghMastaDB.getUserDao().clearUsers()
-                                    ghMastaDB.getRepositoryDao().clearRepositories()
-                                    ghMastaDB.getRepositoryPageKeyDao().clearRepositoryPageKeys()
-                                }
-                                ghMastaDB.getUserDao().insertUsers(users)
-                                ghMastaDB.getRepositoryDao().insertRepositories(repositories)
-                                ghMastaDB.getRepositoryPageKeyDao()
-                                    .insertRepositoryPageKeys(repositoryPageKeys)
-                            }
+                        @Suppress("UNCHECKED_CAST")
+                        when (searchType) {
+                            SearchType.USER_NAME -> (response.body() as List<Repository>)
+                            SearchType.REPOSITORY_KEYWORD -> (response.body() as RepositorySearchResponse).items
+                        }.let { repositories ->
+                            mediatorLog("received ${repositories.size} new repos, clearRepo: $clearRepo, searchType: $searchType")
+                            insertRepositoriesIntoDB(
+                                repositories,
+                                linkHeader,
+                                currentPage,
+                                clearRepo
+                            )
                         }
                         return MediatorResult.Success(endOfPaginationReached = false)
                     } ?: run {
@@ -163,8 +163,43 @@ class RepositoryMediator(
                 }
             }
         } catch (e: Exception) {
-            mediatorLog("fucked: $e")
+            mediatorLog("failed to request for page $currentPage with $searchType: $e")
             return MediatorResult.Error(e)
+        }
+    }
+
+    private suspend fun insertRepositoriesIntoDB(
+        repositories: List<Repository>,
+        linkHeader: String,
+        currentPage: Int,
+        clearRepo: Boolean
+    ) {
+        val (nextPage, previousPage, firstPage, lastPage) = getPageInfo(
+            linkHeader
+        )
+        val users = repositories.map { it.owner }
+        val repositoryPageKeys = repositories.map {
+            RepositoryPageKey(
+                it.id,
+                currentPage,
+                nextPage,
+                previousPage,
+                firstPage,
+                lastPage
+            )
+        }
+        ghMastaDB.withTransaction {
+            if (clearRepo) {
+                ghMastaDB.getUserDao().clearUsers()
+                ghMastaDB.getRepositoryDao().clearRepositories()
+                ghMastaDB.getRepositoryPageKeyDao()
+                    .clearRepositoryPageKeys()
+            }
+            ghMastaDB.getUserDao().insertUsers(users)
+            ghMastaDB.getRepositoryDao()
+                .insertRepositories(repositories)
+            ghMastaDB.getRepositoryPageKeyDao()
+                .insertRepositoryPageKeys(repositoryPageKeys)
         }
     }
 

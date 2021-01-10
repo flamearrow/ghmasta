@@ -19,8 +19,12 @@ interface RepositoryDao {
     @Query("SELECT * FROM repository_table WHERE login = :ownerLoginName ORDER BY repository_name ASC")
     fun getRepositoriesOfUser(ownerLoginName: String): PagingSource<Int, Repository>
 
+    // NOTE: queryString needs to be "%query%"
+    @Query("SELECT * FROM repository_table WHERE repository_name LIKE :queryString OR description LIKE :queryString ORDER BY stargazersCount DESC, repository_name ASC")
+    fun getRepositories(queryString: String): PagingSource<Int, Repository>
+
     @Query("SELECT * FROM repository_table")
-    fun getRepositories(): PagingSource<Int, Repository>
+    fun getAllRepositories(): PagingSource<Int, Repository>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertRepository(repo: Repository)

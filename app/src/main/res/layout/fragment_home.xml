@@ -41,22 +41,22 @@
                 android:id="@+id/radio_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:text="@string/username" />
 
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/radio_repo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
                 android:text="@string/reponame" />
         </RadioGroup>
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/search_text"
             android:layout_width="0dp"
-            android:text="flamearrow"
             android:layout_height="wrap_content"
             android:hint="@string/search_hint"
+            android:text="@string/flamearrow"
             app:layout_constraintBottom_toTopOf="@id/filter"
             app:layout_constraintEnd_toStartOf="@+id/search_button"
             app:layout_constraintStart_toStartOf="parent"
