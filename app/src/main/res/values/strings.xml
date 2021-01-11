@@ -9,4 +9,5 @@
     <string name="search_title">Repo search</string>
     <string name="search_hint">username or repository keyword</string>
     <string name="flamearrow">flamearrow</string>
+    <string name="retry">retry</string>
 </resources>

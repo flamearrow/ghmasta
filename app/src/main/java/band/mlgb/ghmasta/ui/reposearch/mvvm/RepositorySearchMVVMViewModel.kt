@@ -40,4 +40,8 @@ class RepositorySearchMVVMViewModel @Inject constructor(
             reposResult.addSource(keywordSearchReposLive, newPagingDataObserver)
         }
     }
+
+    suspend fun clearDB() {
+        repositoryRepo.deleteResults()
+    }
 }
