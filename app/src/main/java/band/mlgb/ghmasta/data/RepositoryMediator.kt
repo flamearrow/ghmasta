@@ -113,7 +113,7 @@ class RepositoryMediator(
     }
 
     private fun mediatorLog(msg: String) {
-        Log.d(LOG_TAG, msg)
+        Log.d(TAG, msg)
     }
 
     data class PageInfo(
@@ -267,6 +267,6 @@ class RepositoryMediator(
         private const val LAST = "last"
         private const val FIRST = "first"
         private const val PAGE = "page"
-        private const val LOG_TAG = "RepositoryMediator"
+        private val TAG = RepositoryMediator::class.java.simpleName
     }
 }
