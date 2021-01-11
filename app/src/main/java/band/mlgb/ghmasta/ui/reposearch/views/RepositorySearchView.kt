@@ -12,4 +12,11 @@ interface RepositorySearchView {
     fun searchWithUserNameIntent(): LiveData<String>
     fun searchWithKeywordIntent(): LiveData<String>
     fun clearResultIntent(): LiveData<Unit>
+
+    // Note: this three are required on View because the loading/error state needs to be obtained
+    // from PagingDataAdapter, which is initialized in View.
+    // For regular MVI pattern, the error/loading state is originated from Repository
+    fun loadingIntent(): LiveData<Unit>
+    fun initializedIntent(): LiveData<Unit>
+    fun errorIntent(): LiveData<Throwable>
 }

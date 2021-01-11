@@ -89,7 +89,7 @@ class RepositorySearchMVVMFragment : Fragment() {
                 }
             }
             LoadState.Loading -> {
-                repositoryLog("$type refreshing")
+                repositoryLog("$type is loading")
                 if (type == REFRESH) {
                     binding.results.visibility = View.INVISIBLE
                     binding.progressBar.visibility = View.VISIBLE
