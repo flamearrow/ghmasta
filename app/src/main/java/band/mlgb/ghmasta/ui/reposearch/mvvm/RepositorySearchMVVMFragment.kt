@@ -15,6 +15,7 @@ import band.mlgb.ghmasta.ui.reposearch.SearchResultPagingAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 /**
@@ -30,12 +31,15 @@ class RepositorySearchMVVMFragment : Fragment() {
     @Inject
     lateinit var reposAdapter: SearchResultPagingAdapter
 
+
+    lateinit var binding: FragmentRepositorySearchBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentRepositorySearchBinding.inflate(inflater, container, false)
+        binding = FragmentRepositorySearchBinding.inflate(inflater, container, false)
         binding.onClickListener = View.OnClickListener {
             binding.searchText.text?.let { searchText ->
                 when (binding.radioName.isChecked) {
@@ -46,8 +50,13 @@ class RepositorySearchMVVMFragment : Fragment() {
         }
 
         binding.filter.setOnCheckedChangeListener { _, _ ->
-            lifecycleScope.launch(Dispatchers.IO) {
-                viewModel.clearDB()
+            lifecycleScope.launch {
+                withContext(Dispatchers.IO) {
+                    viewModel.clearDB()
+                }
+                withContext(Dispatchers.Main) {
+                    toggleUIVisibility(VisibleUIComponent.RESULTS)
+                }
             }
         }
 
@@ -56,9 +65,9 @@ class RepositorySearchMVVMFragment : Fragment() {
         // use refresh/append/prepend field to get combined results
         // can also access dedicated results from
         reposAdapter.addLoadStateListener { loadState ->
-            checkLoadState(loadState.refresh, REFRESH, binding)
-            checkLoadState(loadState.append, APPEND, binding)
-            checkLoadState(loadState.prepend, PREPEND, binding)
+            checkLoadState(loadState.refresh, REFRESH)
+            checkLoadState(loadState.append, APPEND)
+            checkLoadState(loadState.prepend, PREPEND)
         }
 
         binding.results.adapter = reposAdapter
@@ -72,36 +81,53 @@ class RepositorySearchMVVMFragment : Fragment() {
         return binding.root
     }
 
+    enum class VisibleUIComponent {
+        RESULTS, PROGRESSBAR, RETRYBUTTON
+    }
+
+    private fun toggleUIVisibility(component: VisibleUIComponent) {
+        when (component) {
+            VisibleUIComponent.RESULTS -> {
+                binding.results.visibility = View.VISIBLE
+                binding.progressBar.visibility = View.INVISIBLE
+                binding.retryButton.visibility = View.INVISIBLE
+            }
+            VisibleUIComponent.PROGRESSBAR -> {
+                binding.results.visibility = View.INVISIBLE
+                binding.progressBar.visibility = View.VISIBLE
+                binding.retryButton.visibility = View.INVISIBLE
+            }
+            VisibleUIComponent.RETRYBUTTON -> {
+                binding.results.visibility = View.INVISIBLE
+                binding.progressBar.visibility = View.INVISIBLE
+                binding.retryButton.visibility = View.VISIBLE
+            }
+        }
+    }
+
     // only flip the UI components with type refresh, append and prepend UI errors will be handled
     // by header and footer
     private fun checkLoadState(
         state: LoadState,
         type: String,
-        binding: FragmentRepositorySearchBinding
     ) {
         when (state) {
             is LoadState.NotLoading -> {
                 repositoryLog("$type not loading")
                 if (type == REFRESH) {
-                    binding.results.visibility = View.VISIBLE
-                    binding.progressBar.visibility = View.INVISIBLE
-                    binding.retryButton.visibility = View.INVISIBLE
+                    toggleUIVisibility(VisibleUIComponent.RESULTS)
                 }
             }
             LoadState.Loading -> {
                 repositoryLog("$type is loading")
                 if (type == REFRESH) {
-                    binding.results.visibility = View.INVISIBLE
-                    binding.progressBar.visibility = View.VISIBLE
-                    binding.retryButton.visibility = View.INVISIBLE
+                    toggleUIVisibility(VisibleUIComponent.PROGRESSBAR)
                 }
             }
             is LoadState.Error -> {
                 showError("Failed to load data for $type", state.error)
                 if (type == REFRESH) {
-                    binding.results.visibility = View.INVISIBLE
-                    binding.progressBar.visibility = View.INVISIBLE
-                    binding.retryButton.visibility = View.VISIBLE
+                    toggleUIVisibility(VisibleUIComponent.RETRYBUTTON)
                 }
             }
         }
